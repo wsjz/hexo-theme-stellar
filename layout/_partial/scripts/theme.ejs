@@ -28,18 +28,18 @@
   }
 
   const switchTheme = () => {
-    // light -> dark -> auto -> light -> ...
-    const currentTheme = document.documentElement.getAttribute('data-theme')
+    // auto -> dark -> light -> auto -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme') ?? 'auto'
     let newTheme;
     switch (currentTheme) {
       case 'light':
-        newTheme = 'dark'
-        break
-      case 'dark':
         newTheme = 'auto'
         break
-      default:
+      case 'dark':
         newTheme = 'light'
+        break
+      default:
+        newTheme = 'dark'
     }
     applyTheme(newTheme)
     window.localStorage.setItem('Stellar.theme', newTheme)
